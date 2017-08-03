@@ -1,0 +1,27 @@
+<h2>Here is the <%= @restaurant.name %>'s restaurant page, bro !</h2>
+
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.phone_number %></p>
+<p><%= @restaurant.category %></p>
+
+<hr>
+<h3>Reviews for <%= @restaurant.name %>, my friend</h3>
+<% @restaurant.reviews.each do |review| %>
+  <p> <%= review.content  %> </p>
+  <p> <%= review.rating  %> </p>
+<% end %>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-8">
+    <%= simple_form_for([@restaurant, @review]) do |f| %>
+      <%= f.input :rating %>
+      <%= f.input :content %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
